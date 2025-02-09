@@ -13,9 +13,8 @@ public class Main {
             System.out.println("Остров до перемещения:");
             CreateIsland.WatchIsland(island.getAnimals());
 
-            island.move();
+            island.startMovingEverySecond();
 
-            System.out.println("\nОстров после перемещения:");
-            CreateIsland.WatchIsland(island.getAnimals());
+
         }
     }

@@ -4,14 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0c0c488e-c447-4f0a-8835-44d3e54cf994" name="Changes" comment="Аджарагуджу">
-      <change afterPath="$PROJECT_DIR$/src/main/animal/Donkey.java" afterDir="false" />
+    <list default="true" id="0c0c488e-c447-4f0a-8835-44d3e54cf994" name="Changes" comment="животные двигаются">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/animal/Animal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/animal/Animal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/animal/Donkey.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/animal/Donkey.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/animal/Wolf.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/animal/Wolf.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/creatIsland/CreateIsland.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/creatIsland/CreateIsland.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/move.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/move.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/move.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,7 +75,15 @@
       <option name="project" value="LOCAL" />
       <updated>1737967182083</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="доска">
+      <option name="closed" value="true" />
+      <created>1738791922975</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1738791922975</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -91,7 +99,9 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Аджарагуджу" />
-    <option name="LAST_COMMIT_MESSAGE" value="Аджарагуджу" />
+    <MESSAGE value="доска" />
+    <MESSAGE value="животные двигаются" />
+    <option name="LAST_COMMIT_MESSAGE" value="животные двигаются" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
