@@ -4,14 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0c0c488e-c447-4f0a-8835-44d3e54cf994" name="Changes" comment="животные двигаются">
+    <list default="true" id="0c0c488e-c447-4f0a-8835-44d3e54cf994" name="Changes" comment="животные двигаются от своей скорости">
+      <change afterPath="$PROJECT_DIR$/src/main/animal/herbivores/EdibleAnimal.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/animal/predators/ChanceEaten.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/animal/predators/Predatod.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/animal/predators/PredatorAnimal.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/animal/predators/Wolf.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/animal/predators/bear.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/animal/predators/fox.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/animal/Animal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/animal/Animal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/animal/Donkey.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/animal/Donkey.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/animal/Wolf.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/animal/Wolf.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/animal/Donkey.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/animal/herbivores/Donkey.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/animal/Wolf.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/animal/trava.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/animal/grace.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/creatIsland/CreateIsland.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/creatIsland/CreateIsland.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/move.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/eat.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,6 +28,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -50,6 +58,11 @@
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="ExtractSuperBase.RECENT_KEYS">
+      <recent name="main.animal.herbivores" />
+    </key>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -83,7 +96,15 @@
       <option name="project" value="LOCAL" />
       <updated>1738791922975</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="животные двигаются от своей скорости">
+      <option name="closed" value="true" />
+      <created>1739139462809</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1739139462809</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -101,7 +122,8 @@
     <MESSAGE value="Аджарагуджу" />
     <MESSAGE value="доска" />
     <MESSAGE value="животные двигаются" />
-    <option name="LAST_COMMIT_MESSAGE" value="животные двигаются" />
+    <MESSAGE value="животные двигаются от своей скорости" />
+    <option name="LAST_COMMIT_MESSAGE" value="животные двигаются от своей скорости" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

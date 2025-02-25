@@ -1,5 +1,5 @@
 package main.animal;
-
+import java.util.List;
 import java.util.Random;
 
 public abstract class Animal {
@@ -7,6 +7,7 @@ public abstract class Animal {
     private int x;
     private int y;
     protected int speed;
+
 
     public Animal(String name, int x, int y,int speed) {
         this.name = name;
@@ -35,6 +36,8 @@ public abstract class Animal {
         this.y = y;
     }
 
+
+
     public void move(int width, int height, Random random) {
         int newX = x + random.nextInt(2 * speed + 1) - speed;
         int newY = y + random.nextInt(2 * speed + 1) - speed;
@@ -47,5 +50,7 @@ public abstract class Animal {
         setX(newX);
         setY(newY);
     }
+    public void interactWithOthers(List<Animal> others){
 
+    }
 }

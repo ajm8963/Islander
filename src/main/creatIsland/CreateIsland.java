@@ -1,16 +1,21 @@
 package main.creatIsland;
 import main.animal.Animal;
-import main.animal.Donkey;
-import main.animal.Wolf;
+import main.animal.herbivores.Donkey;
+import main.animal.predators.Wolf;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 import java.util.Random;
 import java.util.concurrent.ScheduledExecutorService;
+import java.util.ArrayList;
+import java.util.List;
+
+
 
 public class CreateIsland {
     private Animal[][][] animals;
     final int width = 10;
     final int height = 10;
+
     public CreateIsland() {
 
         Random random = new Random();
@@ -27,11 +32,13 @@ public class CreateIsland {
 
         for (int i = 0; i < width; i++) {
             for (int j = 0; j < height; j++) {
-                if (random.nextInt(2) == 1) {
-                    addAnimal(i, j, new Wolf("Волк", i, j));
-                } else {
-                    addAnimal(i, j, new Donkey("Осел", i, j));
-                }
+                switch (random.nextInt(2)) { // Добавляем разные виды животных
+                    case 0:
+                        addAnimal(i, j, new Wolf(i, j));
+                        break;
+                    case 1:
+                        addAnimal(i, j, new Donkey(i, j));
+                        break;}
             }
         }
     }
@@ -48,12 +55,12 @@ public class CreateIsland {
     public void moveAll() {
         Random random = new Random();
 
-
+        // Создаем временный массив для перемещений
         Animal[][][] tempAnimals = new Animal[width][height][];
 
         for (int i = 0; i < width; i++) {
             for (int j = 0; j < height; j++) {
-                tempAnimals[i][j] = new Animal[0];
+                tempAnimals[i][j] = new Animal[0]; // Инициализируем временную ячейку как пустую
             }
         }
 
@@ -62,16 +69,40 @@ public class CreateIsland {
                 Animal[] cell = animals[i][j];
 
                 for (Animal animal : cell) {
-                    animal.move(width, height, random);
+                    animal.move(width, height, random); // Вызываем метод move для каждого животного
 
-
+                    // Добавляем животное во временную ячейку
                     addAnimalToTemp(tempAnimals, animal.getX(), animal.getY(), animal);
                 }
             }
         }
 
-
+        // Обновляем основной массив
         animals = tempAnimals;
+
+        // Обрабатываем взаимодействие между животными
+        for (int i = 0; i < width; i++) {
+            for (int j = 0; j < height; j++) {
+                List<Animal> cell = getAnimalsInCell(i, j);
+
+                // Вызываем метод interactWithOthers для каждого животного в клетке
+                for (Animal animal : new ArrayList<>(cell)) { // Создаем копию списка для безопасной итерации
+                    animal.interactWithOthers(cell);
+                }
+
+                // Обновляем содержимое клетки
+                animals[i][j] = cell.toArray(new Animal[0]);
+            }
+        }
+    }
+
+    // Метод для получения списка животных в клетке
+    private List<Animal> getAnimalsInCell(int x, int y) {
+        List<Animal> cell = new ArrayList<>();
+        for (Animal animal : animals[x][y]) {
+            cell.add(animal);
+        }
+        return cell;
     }
 
 
@@ -82,9 +113,11 @@ public class CreateIsland {
         newAnimals[currentAnimals.length] = animal;
         tempAnimals[x][y] = newAnimals;
     }
+
     public Animal[][][] getAnimals() {
         return animals;
     }
+
     public static void WatchIsland(Animal[][][] board) {
         for (Animal[][] row : board) {
             for (Animal[] cell : row) {
@@ -101,6 +134,7 @@ public class CreateIsland {
             System.out.println();
         }
     }
+
     public void startMovingEverySecond() {
         ScheduledExecutorService scheduler = Executors.newSingleThreadScheduledExecutor();
         Runnable task = () -> {
