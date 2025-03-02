@@ -1,6 +1,6 @@
 package main.creatIsland;
 import main.animal.Animal;
-import main.animal.herbivores.Donkey;
+import main.animal.herbivores.Horse;
 import main.animal.predators.Wolf;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
@@ -37,7 +37,7 @@ public class CreateIsland {
                         addAnimal(i, j, new Wolf(i, j));
                         break;
                     case 1:
-                        addAnimal(i, j, new Donkey(i, j));
+                        addAnimal(i, j, new Horse(i, j));
                         break;}
             }
         }
@@ -52,15 +52,44 @@ public class CreateIsland {
         animals[x][y] = newAnimals;
     }
 
+    private void handleBreeding(List<Animal> cell, int x, int y) {
+        // Создаем список уникальных типов животных в клетке
+        List<Class<? extends Animal>> types = new ArrayList<>();
+        for (Animal animal : cell) {
+            if (!types.contains(animal.getClass())) {
+                types.add(animal.getClass());
+            }
+        }
+
+        // Проверяем каждый тип на возможность размножения
+        for (Class<? extends Animal> type : types) {
+            int count = 0;
+            Animal lastAnimal = null;
+
+            // Считаем количество животных данного типа
+            for (Animal animal : cell) {
+                if (type.isInstance(animal)) {
+                    count++;
+                    lastAnimal = animal;
+                }
+            }
+
+            // Если достаточно животных для размножения
+            if (count >= 2 && lastAnimal != null && Math.random() < lastAnimal.getBreedChance()) {
+                System.out.println(lastAnimal.getName() + " размножился!");
+                addAnimal(x, y, lastAnimal.breed(x, y)); // Создаем потомка
+            }
+        }
+    }
     public void moveAll() {
         Random random = new Random();
 
-        // Создаем временный массив для перемещений
+
         Animal[][][] tempAnimals = new Animal[width][height][];
 
         for (int i = 0; i < width; i++) {
             for (int j = 0; j < height; j++) {
-                tempAnimals[i][j] = new Animal[0]; // Инициализируем временную ячейку как пустую
+                tempAnimals[i][j] = new Animal[0];
             }
         }
 
@@ -69,34 +98,43 @@ public class CreateIsland {
                 Animal[] cell = animals[i][j];
 
                 for (Animal animal : cell) {
-                    animal.move(width, height, random); // Вызываем метод move для каждого животного
+                        animal.updateHunger();
 
-                    // Добавляем животное во временную ячейку
+                    if(animal.isDeadFromHunger()){
+                        continue;
+                    }
+                    animal.move(width, height, random);
+
+
                     addAnimalToTemp(tempAnimals, animal.getX(), animal.getY(), animal);
                 }
             }
         }
 
-        // Обновляем основной массив
+
         animals = tempAnimals;
 
-        // Обрабатываем взаимодействие между животными
+
         for (int i = 0; i < width; i++) {
             for (int j = 0; j < height; j++) {
                 List<Animal> cell = getAnimalsInCell(i, j);
 
-                // Вызываем метод interactWithOthers для каждого животного в клетке
-                for (Animal animal : new ArrayList<>(cell)) { // Создаем копию списка для безопасной итерации
-                    animal.interactWithOthers(cell);
+                for (Animal animal : new ArrayList<>(cell)) {
+                    if (!animal.isDeadFromHunger()) {
+                        animal.interactWithOthers(cell);
+                    } else {
+                        System.out.println(animal.getName() + " умер от голода!");
+                        cell.remove(animal);
+                    }
                 }
+                handleBreeding(cell, i, j);
 
-                // Обновляем содержимое клетки
                 animals[i][j] = cell.toArray(new Animal[0]);
             }
         }
     }
 
-    // Метод для получения списка животных в клетке
+
     private List<Animal> getAnimalsInCell(int x, int y) {
         List<Animal> cell = new ArrayList<>();
         for (Animal animal : animals[x][y]) {
@@ -113,6 +151,8 @@ public class CreateIsland {
         newAnimals[currentAnimals.length] = animal;
         tempAnimals[x][y] = newAnimals;
     }
+
+
 
     public Animal[][][] getAnimals() {
         return animals;
